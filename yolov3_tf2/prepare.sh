@@ -4,7 +4,9 @@ pip install jupyterlab
 
 export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0.0.0
 
-pip install opencv-python
+pip install opencv-python==4.1.1.26
+pip install lxml
+pip install tqdm
 
 # yolov3
 wget https://pjreddie.com/media/files/yolov3.weights -O data/yolov3.weights
