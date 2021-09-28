@@ -13,3 +13,4 @@ pip install opencv-python==4.1.1.26
 pip install lxml
 pip install tqdm
 
+pip install psutil
