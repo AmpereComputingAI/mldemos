@@ -16,4 +16,4 @@ pip install tqdm
 pip install psutil
 
 # Generate license key for DLS
-python3 -c "from datetime import date as d; x=(d.today() - d(1996, 5, 19)).days + 60; print(3**39+5**20*x)"
+python3 -c "from datetime import date as d; x=(d.today() - d(1996, 5, 19)).days + 60; print(3**39+5**20*x)" >> /root/.dls_licence.key
