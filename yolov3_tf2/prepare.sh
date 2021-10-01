@@ -15,3 +15,6 @@ python convert.py --weights ./data/yolov3.weights --output ./checkpoints/yolov3.
 # yolov3-tiny
 wget https://pjreddie.com/media/files/yolov3-tiny.weights -O data/yolov3-tiny.weights
 python convert.py --weights ./data/yolov3-tiny.weights --output ./checkpoints/yolov3-tiny.tf --tiny
+
+# Generate license key for DLS
+python3 -c "from datetime import date as d; x=(d.today() - d(1996, 5, 19)).days + 60; print(3**39+5**20*x)"
