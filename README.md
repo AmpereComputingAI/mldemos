@@ -1,6 +1,16 @@
 # mldemos
 Scripts used for various types of external demos. 
 
+## live_cam_demo (Latency demo)
+This is to demonstrate the latency of performing object detection with ssd_mobilenet_v2. Jupyter Notebook is used to run the demo.
+Steps of running the demo.
+1. cd live_cam_demo
+2. Install packages and prepare model files. Only need to run it once. "./prepare.sh"
+3. Launch Jupyter. "./start_jupyter_altra.sh".  (If you launch it on AWS x86 instance, please use ./start_jupyter_x86.sh)
+4. Open the browser to go to the URL returned by Jupyter. Note that you will need to configure the port forwarding accordingly.
+5. Click to run the ipynb Notebook file "detect_video_altra.ipynb". (On AWS x86 instance, run "detect_video_x86.ipynb" instead)
+6. Click "Run" button. You should see a video playing with overlay of bounding box and classification of objects. The latency, averaged over a sliding window of frames, is also printed on the display.
+
 ## yolov3_tf2 (Latency demo)
 This is to demonstrate the latency of performing object detection with YoloV3. Jupyter Notebook is used to run the demo.
 Steps of running the demo.
