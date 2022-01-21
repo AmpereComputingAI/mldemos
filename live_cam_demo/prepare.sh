@@ -15,7 +15,9 @@ pip install tqdm
 
 pip install psutil
 pip install youtube-dl
-pip install pafy
+
+#pip install pafy
+pip install git+https://github.com/Cupcakus/pafy
 
 apt-get install ffmpeg
 
