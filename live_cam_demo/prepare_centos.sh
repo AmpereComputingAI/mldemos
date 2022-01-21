@@ -19,6 +19,7 @@ pip install git+https://github.com/Cupcakus/pafy
 
 yum -y install epel-release
 yum -y localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+rm SDL2-2.0.10-2.el8.aarch64.rpm || true
 wget http://mirror.leaseweb.com/centos/8/PowerTools/aarch64/os/Packages/SDL2-2.0.10-2.el8.aarch64.rpm
 yum -y install SDL2-2.0.10-2.el8.aarch64.rpm
 yum -y install ffmpeg-libs
