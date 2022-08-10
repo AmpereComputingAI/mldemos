@@ -1,0 +1,14 @@
+diff --git a/export.py b/export.py
+old mode 100644
+new mode 100755
+index 3b85dfc..b84cd57
+--- a/export.py
++++ b/export.py
+@@ -95,6 +95,7 @@ def export_torchscript(model, im, file, optimize, prefix=colorstr('TorchScript:'
+         f = file.with_suffix('.torchscript')
+ 
+         ts = torch.jit.trace(model, im, strict=False)
++        ts = torch.jit.freeze(ts)
+         d = {"shape": im.shape, "stride": int(max(model.stride)), "names": model.names}
+         extra_files = {'config.txt': json.dumps(d)}  # torch._C.ExtraFilesMap()
+         if optimize:  # https://pytorch.org/tutorials/recipes/mobile_interpreter.html

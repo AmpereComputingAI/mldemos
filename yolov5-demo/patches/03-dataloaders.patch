@@ -1,0 +1,38 @@
+diff --git a/utils/dataloaders.py b/utils/dataloaders.py
+index 4f1c98f..10bf6b1 100755
+--- a/utils/dataloaders.py
++++ b/utils/dataloaders.py
+@@ -310,6 +310,7 @@ class LoadStreams:
+                 sources = [x.strip() for x in f.read().strip().splitlines() if len(x.strip())]
+         else:
+             sources = [sources]
++        print("=========== [dataloader 1]")
+ 
+         n = len(sources)
+         self.imgs, self.fps, self.frames, self.threads = [None] * n, [0] * n, [0] * n, [None] * n
+@@ -318,10 +319,16 @@ class LoadStreams:
+         for i, s in enumerate(sources):  # index, source
+             # Start thread to read frames from video stream
+             st = f'{i + 1}/{n}: {s}... '
++            print("=========== [dataloader 2]")
+             if urlparse(s).hostname in ('www.youtube.com', 'youtube.com', 'youtu.be'):  # if source is YouTube video
+                 check_requirements(('pafy', 'youtube_dl==2020.12.2'))
+                 import pafy
+-                s = pafy.new(s).getbest(preftype="mp4").url  # YouTube URL
++                import re
++                #s = pafy.new(s).getbest(preftype="mp4").url  # YouTube URL
++                print("=========== [dataloader 3]")
++                v = pafy.new(s)
++                t = [ i for i, y in enumerate(v.videostreams) if re.search('640', y.resolution) and re.search('mp4', y.extension) ]
++                s = v.videostreams[t[0]].url
+             s = eval(s) if s.isnumeric() else s  # i.e. s = '0' local webcam
+             if s == 0:
+                 assert not is_colab(), '--source 0 webcam unsupported on Colab. Rerun command in a local environment.'
+@@ -339,6 +346,7 @@ class LoadStreams:
+             LOGGER.info(f"{st} Success ({self.frames[i]} frames {w}x{h} at {self.fps[i]:.2f} FPS)")
+             self.threads[i].start()
+         LOGGER.info('')  # newline
++        print("=========== [dataloader 3]")
+ 
+         # check for common shapes
+         s = np.stack([letterbox(x, self.img_size, stride=self.stride, auto=self.auto)[0].shape for x in self.imgs])
